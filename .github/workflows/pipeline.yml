@@ -23,4 +23,10 @@ jobs:
         run: npm run eslint
 
       - name: Trigger render deploy
-        run: curl ${{ secrets.RENDER_DEPLOY_HOOK }}
+        run: curl "${{ secrets.RENDER_DEPLOY_HOOK }}""
+      - name: Check deploy hook exists
+        run: |
+          if [ -z "${{ secrets.RENDER_DEPLOY_HOOK }}" ]; then
+            echo "RENDER_DEPLOY_HOOK is missing"
+            exit 1
+          fi
