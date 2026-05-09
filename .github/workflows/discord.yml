@@ -1,0 +1,31 @@
+name: Discord Notifications
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run build step (example)
+        run: echo "Building project..."
+
+      - name: Success message
+        if: ${{ success() }}
+        uses: Ilshidur/action-discord@v2
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        with:
+          args: "Build succeeded! Commit: ${{ github.sha }}"
+
+      - name: Failure message
+        if: ${{ failure() }}
+        uses: Ilshidur/action-discord@v2
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        with:
+          args: "Build failed! Commit: ${{ github.sha }} by ${{ github.actor }}"
