@@ -1,0 +1,15 @@
+name: Render Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Render
+        run: curl ${{https://api.render.com/deploy/srv-d7vracl7vvec73dmsbq0?key=4NkU4HRjVnk}}
