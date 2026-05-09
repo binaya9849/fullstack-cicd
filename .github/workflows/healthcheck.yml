@@ -1,0 +1,14 @@
+name: Periodic Health Check
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  health_check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping server
+        run: curl https://fullstack-cicd.onrender.com/

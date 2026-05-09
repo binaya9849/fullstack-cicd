@@ -38,3 +38,25 @@ jobs:
       - name: Trigger Render deploy
         if: ${{ github.event_name == 'push' }}
         run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
+
+  notify:
+    needs: simple_deployment_pipeline
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Success message
+        if: success()
+        uses: Ilshidur/action-discord@v2
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        with:
+          args: "✅ Deployment successful: ${{ github.sha }}"
+
+      - name: Failure message
+        if: failure()
+        uses: Ilshidur/action-discord@v2
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        with:
+          args: "❌ Deployment failed: ${{ github.sha }}"
