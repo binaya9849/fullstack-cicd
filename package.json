@@ -14,7 +14,9 @@
     "type": "git",
     "url": "git+https://github.com/smartlyio/fullstackopen-cicd.git"
   },
-  "keywords": ["fullstack-open"],
+  "keywords": [
+    "fullstack-open"
+  ],
   "author": "Smartly.io",
   "license": "ISC",
   "bugs": {
@@ -26,12 +28,15 @@
     "express": "^5.2.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-router-dom": "^7.13.1"
+    "react-router-dom": "^7.13.1",
+    "webpack-bundle-analyzer": "^5.3.0"
   },
   "jest": {
-  "testEnvironment": "jsdom",
-  "setupFiles": ["<rootDir>/jest.setup.js"]
-},
+    "testEnvironment": "jsdom",
+    "setupFiles": [
+      "<rootDir>/jest.setup.js"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.29.0",
     "@babel/plugin-transform-runtime": "^7.29.0",
