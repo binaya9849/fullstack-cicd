@@ -11,4 +11,22 @@ jobs:
 
     steps:
       - name: Ping server
-        run: curl https://fullstack-cicd.onrender.com/
+        id: ping
+        run: |
+          curl -f https://fullstack-cicd.onrender.com/
+
+      - name: Send success message to Discord
+        if: success()
+        uses: Ilshidur/action-discord@v2
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        with:
+          args: "Health check OK: site is up"
+
+      - name: Send failure message to Discord
+        if: failure()
+        uses: Ilshidur/action-discord@v2
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        with:
+          args: "Health check FAILED: site is down"
