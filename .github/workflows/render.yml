@@ -1,0 +1,2 @@
+- name: Deploy to Render
+  run: curl ${https://fullstack-cicd.onrender.com/}

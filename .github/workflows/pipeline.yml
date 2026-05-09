@@ -21,3 +21,6 @@ jobs:
 
       - name: Check style
         run: npm run eslint
+
+      - name: Trigger render deploy
+        run: curl ${{ secrets.RENDER_DEPLOY_HOOK }}
