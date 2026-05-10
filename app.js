@@ -16,11 +16,9 @@ app.get('/test', (req, res) => {
   res.send('hello from feature branch')
 })
 
-// React fallback route (important)
-app.get('/*', (req, res) => {
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
-
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
