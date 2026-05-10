@@ -47,16 +47,16 @@ jobs:
     steps:
       - name: Success message
         if: success()
-        uses: Ilshidur/action-discord@v2
+        uses: Ilshidur/action-discord@@master
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         with:
-          args: "✅ Deployment successful: ${{ github.sha }}"
+          args: "Deployment successful: ${{ github.sha }}"
 
       - name: Failure message
         if: failure()
-        uses: Ilshidur/action-discord@v2
+        uses: Ilshidur/action-discord@@master
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         with:
-          args: "❌ Deployment failed: ${{ github.sha }}"
+          args: "Deployment failed: ${{ github.sha }}"

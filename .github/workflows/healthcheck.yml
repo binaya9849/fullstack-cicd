@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Ping server
         id: ping
-        run: |
+        run: 
           curl -f https://fullstack-cicd.onrender.com/
 
       - name: Send success message to Discord
