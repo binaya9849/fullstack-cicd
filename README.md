@@ -11,4 +11,15 @@ Start by running `npm install` inside the project folder
 `npm run eslint` to run eslint
 `npm run build` to make a production build
 `npm run start-prod` to run your production build
+
+Testing PR workflow
+
 # fullstack-cicd
+
+### Deployment
+
+https://fullstack-cicd.onrender.com/
+
+### Repository
+
+https://github.com/binaya9849/fullstack-cicd
