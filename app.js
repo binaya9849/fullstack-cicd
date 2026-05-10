@@ -1,22 +1,27 @@
 const express = require('express')
-const app = express()
+const path = require('path')
 
+const app = express()
 const PORT = process.env.PORT || 5001
 
-// Home route
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+// serve React build folder
+app.use(express.static(path.join(__dirname, 'dist')))
 
-// 👉 ADD THIS HEALTH CHECK ROUTE
+// API routes
 app.get('/health', (req, res) => {
   res.send('ok')
 })
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
-})
-
 app.get('/test', (req, res) => {
   res.send('hello from feature branch')
+})
+
+// THIS is the important part:
+// any route → send React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+})
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
 })
