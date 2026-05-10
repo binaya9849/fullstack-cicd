@@ -51,7 +51,7 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         with:
-          args: "✅ Deployment successful: ${{ github.sha }}"
+          args: "deployment Successful: ${{ github.sha }}"
 
       - name: Failure message
         if: failure()
@@ -59,4 +59,4 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         with:
-          args: "❌ Deployment failed: ${{ github.sha }}"
+          args: "deployment Failed: ${{ github.sha }}"
